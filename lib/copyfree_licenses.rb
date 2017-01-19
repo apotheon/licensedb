@@ -1,5 +1,4 @@
 require 'sequel'
-require 'net/http'
 
 class CopyfreeLicenses
   def license_names
