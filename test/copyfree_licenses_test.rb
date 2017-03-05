@@ -3,7 +3,7 @@ require 'minitest/must_not'
 require 'minitest/autorun'
 require 'minitest/rg'
 
-require '../lib/copyfree_licenses.rb'
+require '../lib/license_db.rb'
 
 require './helpers.rb'
 
