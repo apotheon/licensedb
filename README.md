@@ -9,8 +9,8 @@ does not even include a proper license database yet.
 The sources for this project are hosted in a Fossil repository, though I also
 maintain a GitHub mirror of it with the [FossGit][fossgit] tool.
 
-[Fossil Repository][fossrec]
-[GitHub Mirror][github]
+* [Fossil Repository][fossrec]
+* [GitHub Mirror][github]
 
 Note: The location of the Fossil repository will change "soon".
 
