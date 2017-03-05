@@ -1,6 +1,4 @@
-require 'sequel'
-
-class CopyfreeLicenses
+class LicenseDB
   def abbrevs
     db.map {|license| license[:abbrev] }
   end

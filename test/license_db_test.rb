@@ -7,7 +7,7 @@ require '../lib/license_db.rb'
 
 require './helpers.rb'
 
-describe CopyfreeLicenses do
+describe LicenseDB do
   abbrev = 'COIL'
   name = 'Copyfree Open Innovation License'
   text = fixture_file('coil.txt')
@@ -25,43 +25,43 @@ describe CopyfreeLicenses do
     error: 'no such license'
   }
 
-  CopyfreeLicenses.new.tap do |cl|
+  LicenseDB.new.tap do |ldb|
     it 'returns a list of copyfree license names' do
-      cl.names.must_include 'MIT License'
-      cl.names.must_not_include name
+      ldb.names.must_include 'MIT License'
+      ldb.names.must_not_include name
     end
 
     it 'returns a list of copyfree license abbreviations' do
-      cl.abbrevs.must_include 'MIT'
-      cl.abbrevs.must_not_include abbrev
+      ldb.abbrevs.must_include 'MIT'
+      ldb.abbrevs.must_not_include abbrev
     end
 
     it 'does not find a nonexistent license' do
-      cl.get_by_abbrev(abbrev).must_equal no_license_error
-      cl.get_by_name(name).must_equal no_license_error
-      cl.get_by_text(text).must_equal no_license_error
+      ldb.get_by_abbrev(abbrev).must_equal no_license_error
+      ldb.get_by_name(name).must_equal no_license_error
+      ldb.get_by_text(text).must_equal no_license_error
     end
   end
 
-  CopyfreeLicenses.new.tap do |cl|
+  LicenseDB.new.tap do |ldb|
     before do
-      cl.add_license license_data
+      ldb.add_license license_data
     end
 
     it 'adds a license to the database and returns license texts' do
-      cl.texts.must_include text
+      ldb.texts.must_include text
     end
 
     it 'gets a license by abbreviation' do
-      cl.get_by_abbrev(abbrev).must_equal license_data
+      ldb.get_by_abbrev(abbrev).must_equal license_data
     end
 
     it 'gets a license by name' do
-      cl.get_by_name(name).must_equal license_data
+      ldb.get_by_name(name).must_equal license_data
     end
 
     it 'gets a license by text' do
-      cl.get_by_text(text).must_equal license_data
+      ldb.get_by_text(text).must_equal license_data
     end
   end
 end
